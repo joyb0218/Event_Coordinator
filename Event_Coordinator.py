@@ -11,19 +11,21 @@ def read_guestlist(file_name):
     name = line_data[0]
     age = int(line_data[1])
     guests[name] = age
-    #Task 1A
+ #Task 1A --
     yield guests
 
 g = read_guestlist('guest_list.txt')
 for guests in g:
   first_ten = (name for name in guests.keys())
+  
+# Task 4A--
   over_21 = (key for key, value in guests.items() if value >= 21)
 
-# Task 1B
+# Task 1B --
 # for i in range(10):
 #   print(next(first_ten))
 
-# Task 4 - all guests over 21
+# Task 4b -- all guests over 21
 # for names in over_21:
 #   print(names)
 
@@ -38,7 +40,8 @@ def add_name(name):
                 g.send(file.write('\n' + str(name)))
 
 new_guest = add_name("Jane,35")
-# Task 3 - to all names, even new name added -
+
+# Task 3 - print all names, with new name added -
 # for names in guests.keys():
 #   print(names)
 
@@ -64,6 +67,6 @@ def seating_arrangement_gen():
     yield from fish_table()
 
 # Task 6
-# seating_generator = seating_arrangement_gen()
-# for seats in seating_generator:
-#   print(seats)
+seating_generator = seating_arrangement_gen()
+for seats in seating_generator:
+  print(seats)
